@@ -5,7 +5,7 @@
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://dragonwell.oss-cn-shanghai.aliyuncs.com/17.0.8.0.8%2B7/Alibaba_Dragonwell_Standard_17.0.8.0.8%2B7_x64_windows.zip",
+            "url": "https://dragonwell.oss-cn-shanghai.aliyuncs.com/17.0.8.0.8%2B7/Alibaba_Dragonwell_Standard_17.0.8.0.8.7_x64_windows.zip",
             "hash": "b2ac7e30ae4f2ce8c0a272ee37f886ffc5a5b6e3e50e8653a1adacf79c0769d8"
         }
     },
@@ -28,7 +28,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dragonwell.oss-cn-shanghai.aliyuncs.com/$matchDragon/Alibaba_Dragonwell_Standard_$matchDragon_x64_windows.zip"
+                "url": "https://dragonwell.oss-cn-shanghai.aliyuncs.com/$matchDragon/$matchFilename.zip"
             }
         },
         "hash": {

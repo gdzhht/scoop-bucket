@@ -5,7 +5,7 @@
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://dragonwell.oss-cn-shanghai.aliyuncs.com/11.0.20.16/Alibaba_Dragonwell_Standard_11.0.20.16.8_x64_windows.zip",
+            "url": "https://dragonwell.oss-cn-shanghai.aliyuncs.com/11.0.20.16.8/Alibaba_Dragonwell_Standard_11.0.20.16.8_x64_windows.zip",
             "hash": "a498a50f25b0696966ea99e8911ab15c7d07c70bd9bfdec55e5e5fd078ca1d8c"
         }
     },
