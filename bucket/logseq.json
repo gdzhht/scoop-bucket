@@ -5,7 +5,7 @@
     "license": "AGPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://ghps.cc/https://github.com/logseq/logseq/releases/download/0.9.18/logseq-win-x64-0.9.18.exe#/dl.7z",
+            "url": "https://gh.ddlc.top/https://github.com/logseq/logseq/releases/download/0.9.18/logseq-win-x64-0.9.18.exe#/dl.7z",
             "hash": "c16ab4cd7885d08f8511375a906c64ea44239f897026a60ff71b8a7d00c63bd6"
         }
     },
@@ -25,7 +25,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghps.cc/https://github.com/logseq/logseq/releases/download/$version/logseq-win-x64-$version.exe#/dl.7z",
+                "url": "https://gh.ddlc.top/https://github.com/logseq/logseq/releases/download/$version/logseq-win-x64-$version.exe#/dl.7z",
                 "hash": {
                     "url": "$baseurl/SHA256SUMS.txt",
                     "regex": "$sha256\\s+Logseq-win-x64"
