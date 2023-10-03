@@ -7,19 +7,38 @@
         "identifier": "Proprietary",
         "url": "https://github.com/zerotier/ZeroTierOne/blob/master/LICENSE.txt"
     },
-    "url": "https://mirrors.sustech.edu.cn/RELEASES/1.10.6/dist/ZeroTierOne.msi#/setup.msi_",
+    "url": "https://mirrors.sustech.edu.cn/zerotier/RELEASES/1.10.6/dist/ZeroTierOne.msi#/setup.msi_",
     "hash": "9b3fbbe29771ee2f1b4d45cbf372c9d1dbec9606315aca062c9e909e882b4b64",
     "installer": {
         "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-            "if ([System.Environment]::OSVersion.Version -lt [version]::new(10,0)) { error \"$app requires Windows 10 (or above)\"; break }",
-            "Start-Process msiexec -ArgumentList @('/i', \"`\"$dir\\setup.msi_`\"\", '/qn', '/norestart') -Wait -Verb RunAs | Out-Null"
+            "if (is_admin) {",
+            "    if ([System.Environment]::OSVersion.Version -lt [version]::new(10,0)) { error \"$app requires Windows 10 (or above)\"; break }",
+            "    Start-Process msiexec -ArgumentList @('/i', \"`\"$dir\\setup.msi_`\"\", '/qn', '/norestart') -Wait -Verb RunAs | Out-Null",
+            "break",
+            "}",
+            "elif (Get-Command gsudo){",
+            "    if ([System.Environment]::OSVersion.Version -lt [version]::new(10,0)) { error \"$app requires Windows 10 (or above)\"; break }",
+            "    Start-Process gsudo -ArgumentList @('msiexec' ,'/i', \"`\"$dir\\setup.msi_`\"\", '/qn', '/norestart') -Wait -Verb RunAs | Out-Null",
+            "break",
+            "}",
+            "else {",
+            "    error \"$app requires admin rights to $cmd\"; break",
+            "}"
         ]
     },
     "uninstaller": {
         "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-            "Start-Process msiexec -ArgumentList @('/x', \"`\"$dir\\setup.msi_`\"\", '/qn', '/norestart') -Wait -Verb RunAs | Out-Null"
+            "if (is_admin) {",
+            "Start-Process msiexec -ArgumentList @('/x', \"`\"$dir\\setup.msi_`\"\", '/qn', '/norestart') -Wait -Verb RunAs | Out-Null",
+            "break",
+            "}",
+            "elif (Get-Command gsudo){",
+            "Start-Process  -ArgumentList @('msiexec','/x', \"`\"$dir\\setup.msi_`\"\", '/qn', '/norestart') -Wait -Verb RunAs | Out-Null",
+            "break",
+            "}",
+            "else {",
+            "    error \"$app requires admin rights to $cmd\"; break",
+            "}"
         ]
     },
     "checkver": {
@@ -27,6 +46,6 @@
         "regex": "(?s)Latest version\\: <a.*?>([\\d.]+)</a>"
     },
     "autoupdate": {
-        "url": "https://mirrors.sustech.edu.cn/RELEASES/$version/dist/ZeroTierOne.msi#/setup.msi_"
+        "url": "https://mirrors.sustech.edu.cn/zerotier/RELEASES/$version/dist/ZeroTierOne.msi#/setup.msi_"
     }
 }
