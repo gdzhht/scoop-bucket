@@ -32,7 +32,7 @@
             "            Start-Sleep -Milliseconds 250",
             "            $wireguard_process = Get-Process | Where-Object { $_.name -eq 'wireguard' }",
             "        }",
-            "        $wireguard_process | ForEach-Object { Stop-Process -Id $_.Id -Force }",
+            "        $wireguard_process | ForEach-Object { sudo  Stop-Process -Id $_.Id -Force }",
             "}",
             "else{",
             "    error \"Administrator rights are required to install $app.\"",
@@ -42,18 +42,7 @@
     },
     "uninstaller": {
         "script": [
-            "if (is_admin){",
-            "Invoke-ExternalCommand msiexec -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn', '/norestart') -RunAs | Out-Null",
-            "    break",
-            "}",
-            "elseif (Get-Command sudo) {",
-            "Start-Process msiexec -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn', '/norestart') -Wait -Verb RunAs | Out-Null",     
-            "    break",
-            "} ",
-            "else{",
-            "    error \"Administrator rights are required to install $app.\"",
-            "    break",
-            "}"
+            "Start-Process msiexec -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn', '/norestart') -Wait -Verb RunAs | Out-Null"
         ]
     },
     "checkver": {

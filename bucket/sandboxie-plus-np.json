@@ -19,47 +19,16 @@
     },
     "installer": {
         "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to install\"; break }",
             "Start-Process \"$dir\\setup.exe\" -ArgumentList @('/verysilent', \"/dir=`\"$dir`\"\") -Wait -Verb RunAs | Out-Null",
-            "Remove-Item \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\Sandboxie-Plus\" -Recurse",
-            "Remove-Item \"$([Environment]::GetFolderPath('Desktop'))\\Sandboxie-Plus.lnk\"",
             "Remove-Item \"$dir\\setup.exe\""
         ]
     },
-    "pre_uninstall": "Stop-Process -Name 'SbieSvc' -Force -ErrorAction SilentlyContinue",
+    "pre_uninstall": "sudo Stop-Process -Name 'SbieSvc' -Force -ErrorAction SilentlyContinue",
     "uninstaller": {
         "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to uninstall\"; break }",
-            "Invoke-ExternalCommand \"$dir\\unins000.exe\" -ArgumentList '/verysilent' -RunAs | Out-Null"
+            "Start-Process \"$dir\\unins000.exe\" -ArgumentList '/verysilent' -Wait -Verb RunAs | Out-Null"
         ]
     },
-    "bin": [
-        [
-            "start.exe",
-            "sandboxie-start"
-        ]
-    ],
-    "shortcuts": [
-        [
-            "SandMan.exe",
-            "Sandboxie-Plus"
-        ],
-        [
-            "Start.exe",
-            "Sandboxie Start Menu",
-            "/box:__ask__ start_menu"
-        ],
-        [
-            "Start.exe",
-            "Run any program sandboxed",
-            "/box:__ask__ run_dialog"
-        ],
-        [
-            "Start.exe",
-            "Run Web browser sandboxed",
-            "default_browser"
-        ]
-    ],
     "checkver": {
         "github": "https://github.com/sandboxie-plus/Sandboxie",
         "regex": "Release v([\\d.]+) / (?<classicver>[\\d.]+)"
