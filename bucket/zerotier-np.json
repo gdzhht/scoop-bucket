@@ -1,14 +1,14 @@
 {
     "##": "This package is non-portable because the MSI installer installs the drivers required for the app to work.",
-    "version": "1.10.6",
+    "version": "1.12.2",
     "description": "Network connection/management software that combines the capabilities of VPN and SD-WAN.",
     "homepage": "https://www.zerotier.com/",
     "license": {
         "identifier": "Proprietary",
         "url": "https://github.com/zerotier/ZeroTierOne/blob/master/LICENSE.txt"
     },
-    "url": "https://mirrors.sustech.edu.cn/zerotier/RELEASES/1.10.6/dist/ZeroTierOne.msi#/setup.msi_",
-    "hash": "9b3fbbe29771ee2f1b4d45cbf372c9d1dbec9606315aca062c9e909e882b4b64",
+    "url": "https://mirrors.sustech.edu.cn/zerotier/RELEASES/1.12.2/dist/ZeroTierOne.msi#/setup.msi_",
+    "hash": "f6c2b5605e786655552279b4b0b72d3f55fdd5d3f42ee8f5f2f24d146e8112e9",
     "installer": {
         "script": [
             "    if ([System.Environment]::OSVersion.Version -lt [version]::new(10,0)) { error \"$app requires Windows 10 (or above)\"; break }",
@@ -16,9 +16,7 @@
         ]
     },
     "uninstaller": {
-        "script": [
-            "Start-Process msiexec -ArgumentList @('/x', \"`\"$dir\\setup.msi_`\"\", '/qn', '/norestart') -Wait -Verb RunAs | Out-Null"
-        ]
+        "script": "Start-Process msiexec -ArgumentList @('/x', \"`\"$dir\\setup.msi_`\"\", '/qn', '/norestart') -Wait -Verb RunAs | Out-Null"
     },
     "checkver": {
         "url": "https://github.com/zerotier/ZeroTierOne/blob/master/RELEASE-NOTES.md",
