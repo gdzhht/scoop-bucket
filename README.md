@@ -1,6 +1,6 @@
 # Scoop Bucket Template
-raw:https://raw.iqiq.io/
-     eg. https://raw.iqiq.io/ScoopInstaller/Binary/master/dark/dark-3.11.2.zip
+raw:https://ghproxy.com/
+     eg. https://ghproxy.com/https://github.com/ScoopInstaller/Binary/master/dark/dark-3.11.2.zip
 release:https://gh.ddlc.top/
       eg. https://gh.ddlc.top/https://github.com/gerardog/gsudo/releases/download/v2.3.0/gsudo.setup.x86.msi
 <!-- Uncomment the following line after replacing placeholders -->
