@@ -23,8 +23,8 @@
     ],
     "persist": "Options.ini",
     "checkver": {
-        "url": "https://internal.eassos.com/update/diskgenius/update.php",
-        "regex": "\\[([\\d.]+)\\]"
+        "url": "https://www.diskgenius.com/download.php",
+        "regex": "Version: ([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
